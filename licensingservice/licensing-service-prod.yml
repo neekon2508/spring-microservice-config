@@ -2,6 +2,6 @@ spring:
   datasource:
     username: postgres
     url: jdbc:postgresql://database:5432/neekon_prod
-    password: "{cipher}f4609209a3e75d8ac79a5e3063ce151c2cd28aa431170bb06974b9421e807b6a"
+    password: "{cipher}6cabc658ef44bf05d8824676abc1efb23e0ccee5a274010afc64147c090d3dc5"
 example:
   property: I AM PROD
