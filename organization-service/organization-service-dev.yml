@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: postgres
-    url: jdbc:postgresql://localhost:5432/neekon_dev
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/neekon_dev
     password: "{cipher}6cabc658ef44bf05d8824676abc1efb23e0ccee5a274010afc64147c090d3dc5"
 encrypt:
   key: neekon25082003
