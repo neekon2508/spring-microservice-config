@@ -22,3 +22,5 @@ spring:
     driverClassName: org.postgresql.Driver
 example:
   property: I AM THE DEFAULT
+encrypt:
+  key: neekon25082003
