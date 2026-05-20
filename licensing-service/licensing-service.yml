@@ -32,6 +32,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${EUREKA_HOST:localhost}:8070/eureka/
+
 resilience4j:
   circuitbreaker:
     instances:
@@ -55,3 +56,31 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 4
         waitDurationInOpenState: 20000ms
         failureRateThreshold: 60
+
+  bulkhead:
+    instances:
+      bulkheadLicenseService:
+        max-wait-duration: 10s
+        max-concurrent-calls: 20
+  thread-pool-bulkhead:
+    instances:
+      bulkheadLicenseService:
+        max-thread-pool-size: 1
+        core-thread-pool-size: 1
+        queue-capacity: 1
+        keep-alive-duration: 20ms
+
+  retry:
+    instances:
+      retryLicenseService:
+        max-attempts: 3
+        wait-duration: 10s
+        retry-exceptions:
+          - java.util.concurrent.TimeoutException
+
+  ratelimiter:
+    instances:
+      licenseService:
+        timeout-duration: 1s
+        limit-refresh-period: 5s
+        limit-for-period: 5
