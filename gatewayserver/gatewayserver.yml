@@ -19,6 +19,9 @@ spring:
           lowerCaseServiceId: true
 
 management:
+  endpoint:
+    gateway:
+      enabled: true
   endpoints:
     web:
       exposure:
