@@ -1,6 +1,12 @@
 server:
   port: 8072
 
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.neekon: DEBUG
+
 eureka:
   instance:
     prefer-ip-address: true
@@ -13,11 +19,18 @@ eureka:
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lowerCaseServiceId: true
-
+      # discovery:
+      #   locator:
+      #     enabled: true
+      #     lowerCaseServiceId: true
+      routes:
+        - id: organization-service
+          uri: lb://organization-service
+          predicates:
+            - Path=/organization/**
+          filters:
+            - RewritePath=/organization/(?<path>.*), /$\{path}
+            
 management:
   endpoint:
     gateway:
