@@ -30,7 +30,8 @@ spring:
             - Path=/organization/**
           filters:
             - RewritePath=/organization/(?<path>.*), /$\{path}
-            
+            - RemoveRequestHeader= Cookie,Set-Cookie
+
 management:
   endpoint:
     gateway:
