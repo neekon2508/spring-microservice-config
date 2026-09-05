@@ -24,6 +24,12 @@ spring:
       minimum-idle: 2
       maximum-pool-size: 10
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://{KEYCLOAK_HOST:localhost}:8180/realms/master
+
 eureka:
   instance:
     prefer-ip-address: true
