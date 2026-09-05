@@ -28,7 +28,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://{KEYCLOAK_HOST:localhost}:8180/realms/master
+          issuer-uri: http://${KEYCLOAK_HOST:localhost}:8180/realms/master
 
 eureka:
   instance:
