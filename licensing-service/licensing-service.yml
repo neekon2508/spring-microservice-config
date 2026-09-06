@@ -30,6 +30,22 @@ spring:
         jwt:
           issuer-uri: http://${KEYCLOAK_HOST:localhost}:8180/realms/master
 
+  kafka:
+    bootstrap-servers: ${KAFKA_HOST:localhost}:9092
+    consumer:
+      group-id: licensingGroup
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: com.neekon.licensing_service.events.model.OrganizationChangeModel
+        spring.json.use.type.headers: false
+        spring.json.trusted.packages: com.neekon.licensing_service.events.model
+
+app:
+  kafka:
+    topic:
+      organization-changes: orgChangeTopic
+
 eureka:
   instance:
     prefer-ip-address: true
