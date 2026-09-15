@@ -47,6 +47,8 @@ spring:
         spring.json.value.default.type: com.neekon.licensing_service.events.model.OrganizationChangeModel
         spring.json.use.type.headers: false
         spring.json.trusted.packages: com.neekon.licensing_service.events.model
+    listener:
+      observation-enabled: true
 
   data:
     redis:
